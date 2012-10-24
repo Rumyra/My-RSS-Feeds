@@ -24,9 +24,11 @@ foreach ($data->GetJourneyInfoResult as $route) {
     //set info
     $driveDate = date("l jS F", $driveDateTime);
     $driveStartTime = date("g:ia", $driveDateTime);
-    $pubDate = date('D, d M y H:i:s O', $driveDateTime);
+    $pubDate = date('D, d M Y H:i:s O', $driveDateTime);
+    $guid = date('Hisjny', $driveDateTime);
     //$driveDate = htmlentities(strip_tags($route->StartDateLong));
     $driveTime = $route->Duration;
+    $driveTime = round($driveTime/60).' mins';
     $mapFrom = $route->StartTown;
     $mapTo = $route->EndTown;
     $avSpeed = $route->AvgSpeed.'mph';
@@ -34,10 +36,11 @@ foreach ($data->GetJourneyInfoResult as $route) {
     $output .= "<item>
         <title>Drove (".$driveStartTime.")</title>
         <link>https://drivetoimprove.co.uk/</link>
-        <description>Went for a drive on ".$driveDate." at ".$driveStartTime." for ".$driveTime."&#60;br /&#62;
-        from ".$mapFrom."
-        to ".$mapTo."&#60;br /&#62;
-        at an average speed of ".$avSpeed.".</description>
+        <description>Went for a drive on ".$driveDate." at ".$driveStartTime." for ".$driveTime.
+        " from ".$mapFrom.
+        " to ".$mapTo.
+        " at an average speed of ".$avSpeed.".</description>
+        <guid>http://www.ruthjohn.com/car-journeys/".$guid."</guid>
         <pubDate>".$pubDate."</pubDate>
     </item>";
 }
