@@ -25,7 +25,7 @@ foreach ($data->GetJourneyInfoResult as $route) {
     $driveDate = date("l jS F", $driveDateTime);
     $driveStartTime = date("g:ia", $driveDateTime);
     $pubDate = date('D, d M Y H:i:s O', $driveDateTime);
-    $guid = date('Hisjny', $driveDateTime);
+    $guid = date('His-jny', $driveDateTime);
     //$driveDate = htmlentities(strip_tags($route->StartDateLong));
     $driveTime = $route->Duration;
     $driveTime = round($driveTime/60).' mins';
