@@ -1,10 +1,16 @@
 <?php
 
+/*SET THESE VARIABLES TO GET CORRECT JSON*/
+$user = 'username_here';
+$pass = 'password_here';
+$deviceID = '316';
 $getFrom = date("Y-m-d", time()-(7*24*60*60));
 $getTo = date("Y-m-d", time()+(24*60*60));
 
+$feedUrl = 'https://'.$user.':'.$pass.'@drivetoimprove.co.uk/api/m/JourneyInfo/'.$deviceID.'?from='.$getFrom.'&to='.$getTo;
+
 //getting jason and converting to usable php
-$json = file_get_contents('https://rumyra@gmail.com:riddick@drivetoimprove.co.uk/api/m/JourneyInfo/316?from='.$getFrom.'&to='.$getTo);
+$json = file_get_contents($feedUrl);
 $data = json_decode($json);
 
 $output = "<?xml version=\"1.0\"?>
